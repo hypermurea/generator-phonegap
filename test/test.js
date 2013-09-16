@@ -28,7 +28,17 @@ describe('phonegap generator', function () {
     var expected = [
       // add files you expect to exist here.
       '.jshintrc',
-      '.editorconfig'
+      '.editorconfig',
+	  '.bowerrc',
+	  'bower.json',
+	  '.gitignore',
+	  '.gitattributes',
+	  'Gruntfile.js',
+	  'package.json',
+	  'config.xml',
+	  'app/index.html',
+	  'app/scripts/index.js',
+	  'app/styles/main.css'
     ];
 
     helpers.mockPrompt(this.app, {

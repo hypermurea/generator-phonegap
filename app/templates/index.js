@@ -1,5 +1,4 @@
 'use strict';
-//require([], function () {
 /*global window */
 window.app = {
 		// Application Constructor
