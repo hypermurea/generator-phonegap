@@ -1,0 +1,10 @@
+{
+  "name": "<%= _.slugify(projectName) %>",
+  "version": "0.0.0",
+  "dependencies": {
+	<% if (includeRequireJS) { %>
+    "requirejs": "~2.1.8"
+	<% } %>
+  }
+}
+
