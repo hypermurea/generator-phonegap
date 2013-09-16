@@ -29,4 +29,4 @@ $ yo phonegap
 
 ## License
 
-[MIT License](http://en.wikipedia.org/wiki/MIT_License)
+[BSD License](http://en.wikipedia.org/wiki/BSD_License)
