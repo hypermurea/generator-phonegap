@@ -1,6 +1,6 @@
 {
   "name": "generator-phonegap",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "PhoneGap project generator",
   "keywords": [
     "yeoman-generator", "phonegap", "wp8", "ios", "android"
