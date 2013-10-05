@@ -1,8 +1,8 @@
 # Phonegap-cli specific #
 #########################
 platforms
-merges
-
+phonegap/www/**
+phonegap/.cordova/config.json
 
 # Compiled source #
 ###################
@@ -41,3 +41,9 @@ merges
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# Node.js specific
+##################
+npm-debug.log
+node_modules
+

@@ -33,14 +33,6 @@ module.exports = function (grunt) {
 		},
 
         watch: {
-            coffee: {
-                files: ['<%%= yeoman.app %>/scripts/{,*/}*.coffee'],
-                tasks: ['coffee:dist']
-            },
-            coffeeTest: {
-                files: ['test/spec/{,*/}*.coffee'],
-                tasks: ['coffee:test']
-            },
             compass: {
                 files: ['<%%= yeoman.app %>/styles/{,*/}*.{scss,sass}'],
                 tasks: ['compass:server', 'autoprefixer']
@@ -116,7 +108,16 @@ module.exports = function (grunt) {
                 '!<%%= yeoman.app %>/scripts/vendor/*',
                 'test/spec/{,*/}*.js'
             ]
-        },<% if (testFramework === 'mocha') { %>
+        },
+		karma: {
+		  options: {
+			files: ['test/**/*.js']
+		  },
+		  continuous: {
+		  },
+		  dev: {
+		  }
+		},<% if (testFramework === 'mocha') { %>
         mocha: {
             all: {
                 options: {
@@ -347,15 +348,12 @@ module.exports = function (grunt) {
         concurrent: {
             server: [
                 'compass',
-                'coffee:dist',
                 'copy:styles'
             ],
             test: [
-                'coffee',
                 'copy:styles'
             ],
             dist: [
-                'coffee',
                 'compass',
                 'copy:styles',
                 'imagemin',
@@ -408,9 +406,13 @@ module.exports = function (grunt) {
         'modernizr',<% } %>
         'copy:dist',
         'rev',
-        'usemin',
-		'phonegap:build'
+        'usemin'
     ]);
+
+	grunt.registerTask('platform-build', [
+		'default',
+		'phonegap:build'
+	]);
 
     grunt.registerTask('default', [
         'jshint',
