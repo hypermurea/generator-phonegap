@@ -190,7 +190,7 @@ PhonegapGenerator.prototype.phonegapSetup = function phonegapSetup() {
 	//fs.rename(path.resolve('www/index.html'), path.resolve('www/index_old.html'), function() {self.log.info('Renamed Phonegap provided index.html -> index_old.html') });
 	
 	extfs.copyDirSync(path.resolve('phonegap/.cordova'), path.resolve('.cordova'), function(e) {self.log.create("Copied .cordova configuration") });
-	extfs.copyDirSync(path.resolve('phonegap/www/res'), path.resolve('app/res'), function(e) {self.log.create("moved app resources (splash screens etc) to app/res") });
-	extfs.copyDirSync(path.resolve('phonegap/www/img'), path.resolve('app/images'), function(e) {self.log.create("moved app images") });
+	//extfs.copyDirSync(path.resolve('phonegap/www/res'), path.resolve('app/res'), function(e) {self.log.create("moved app resources (splash screens etc) to app/res") });
+	//extfs.copyDirSync(path.resolve('phonegap/www/img'), path.resolve('app/images'), function(e) {self.log.create("moved app images") });
 	this.template('_config.xml', 'config.xml');
 };
