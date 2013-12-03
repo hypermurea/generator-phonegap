@@ -1,6 +1,6 @@
 {
   "name": "generator-phonegap",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "PhoneGap project generator",
   "keywords": [
     "yeoman-generator", "phonegap", "wp8", "ios", "android"
@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "yeoman-generator": "~0.13.0",
-    "phonegap": "~3.0.0",
+    "phonegap": "~3.1.0",
 	"extended-fs": "~0.3.1"
   },
   "devDependencies": {

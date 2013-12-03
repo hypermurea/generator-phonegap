@@ -110,13 +110,13 @@ module.exports = function (grunt) {
             ]
         },
 		karma: {
-		  options: {
-			files: ['test/**/*.js']
-		  },
-		  continuous: {
-		  },
-		  dev: {
-		  }
+			options: {
+				files: ['test/**/*.js']
+			},
+			continuous: {
+			},
+			dev: {
+			}
 		},<% if (testFramework === 'mocha') { %>
         mocha: {
             all: {
@@ -133,51 +133,6 @@ module.exports = function (grunt) {
                 }
             }
         },<% } %>
-        coffee: {
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '<%%= yeoman.app %>/scripts',
-                    src: '{,*/}*.coffee',
-                    dest: '.tmp/scripts',
-                    ext: '.js'
-                }]
-            },
-            test: {
-                files: [{
-                    expand: true,
-                    cwd: 'test/spec',
-                    src: '{,*/}*.coffee',
-                    dest: '.tmp/spec',
-                    ext: '.js'
-                }]
-            }
-        },
-        compass: {
-            options: {
-                sassDir: '<%%= yeoman.app %>/styles',
-                cssDir: '.tmp/styles',
-                generatedImagesDir: '.tmp/images/generated',
-                imagesDir: '<%%= yeoman.app %>/images',
-                javascriptsDir: '<%%= yeoman.app %>/scripts',
-                fontsDir: '<%%= yeoman.app %>/styles/fonts',
-                importPath: '<%%= yeoman.app %>/bower_components',
-                httpImagesPath: '/images',
-                httpGeneratedImagesPath: '/images/generated',
-                httpFontsPath: '/styles/fonts',
-                relativeAssets: false
-            },
-            dist: {
-                options: {
-                    generatedImagesDir: '<%%= yeoman.dist %>/images/generated'
-                }
-            },
-            server: {
-                options: {
-                    debugInfo: true
-                }
-            }
-        },
         autoprefixer: {
             options: {
                 browsers: ['last 1 version']
@@ -195,26 +150,7 @@ module.exports = function (grunt) {
         // but still available if needed
         /*concat: {
             dist: {}
-        },*/<% if (includeRequireJS) { %>
-        requirejs: {
-            dist: {
-                // Options: https://github.com/jrburke/r.js/blob/master/build/example.build.js
-                options: {
-                    // `name` and `out` is set by grunt-usemin
-                    baseUrl: '<%%= yeoman.app %>/scripts',
-                    optimize: 'none',
-                    // TODO: Figure out how to make sourcemaps work with grunt-usemin
-                    // https://github.com/yeoman/grunt-usemin/issues/30
-                    //generateSourceMaps: true,
-                    // required to support SourceMaps
-                    // http://requirejs.org/docs/errors.html#sourcemapcomments
-                    preserveLicenseComments: false,
-                    useStrict: true,
-                    wrap: true
-                    //uglify2: {} // https://github.com/mishoo/UglifyJS2
-                }
-            }
-        },<% } else { %>
+        },*/
         'bower-install': {
             app: {
                 html: '<%%= yeoman.app %>/index.html',
@@ -226,7 +162,7 @@ module.exports = function (grunt) {
         // enable this task if you prefer defining your build targets here
         /*uglify: {
             dist: {}
-        },*/<% } %>
+        },*/
         rev: {
             dist: {
                 files: {
@@ -322,8 +258,7 @@ module.exports = function (grunt) {
                         '.htaccess',
                         'images/{,*/}*.{webp,gif}',
 						'res/**',
-                        'styles/fonts/{,*/}*.*'<% if (compassBootstrap) { %>,
-                        'bower_components/sass-bootstrap/fonts/*.*'<% } %>
+                        'styles/fonts/{,*/}*.*'
                     ]
                 }]
             },
@@ -334,41 +269,21 @@ module.exports = function (grunt) {
                 dest: '.tmp/styles/',
                 src: '{,*/}*.css'
             }
-        },<% if (includeModernizr) { %>
-        modernizr: {
-            devFile: '<%%= yeoman.app %>/bower_components/modernizr/modernizr.js',
-            outputFile: '<%%= yeoman.dist %>/bower_components/modernizr/modernizr.js',
-            files: [
-                '<%%= yeoman.dist %>/scripts/{,*/}*.js',
-                '<%%= yeoman.dist %>/styles/{,*/}*.css',
-                '!<%%= yeoman.dist %>/scripts/vendor/*'
-            ],
-            uglify: true
-        },<% } %>
+        },
         concurrent: {
             server: [
-                'compass',
                 'copy:styles'
             ],
             test: [
                 'copy:styles'
             ],
             dist: [
-                'compass',
                 'copy:styles',
                 'imagemin',
                 'svgmin',
                 'htmlmin'
             ]
-        }<% if (includeRequireJS) { %>,
-        bower: {
-            options: {
-                exclude: ['modernizr']
-            },
-            all: {
-                rjsConfig: '<%%= yeoman.app %>/scripts/main.js'
-            }
-        }<% } %>
+        }
     });
 
     grunt.registerTask('server', function (target) {
@@ -398,12 +313,10 @@ module.exports = function (grunt) {
         'clean:dist',
         'useminPrepare',
         'concurrent:dist',
-        'autoprefixer',<% if (includeRequireJS) { %>
-        'requirejs',<% } %>
+        'autoprefixer',
         'concat',
         'cssmin',
-        'uglify',<% if (includeModernizr) { %>
-        'modernizr',<% } %>
+        'uglify',
         'copy:dist',
         'rev',
         'usemin'

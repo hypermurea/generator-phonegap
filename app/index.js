@@ -40,32 +40,13 @@ PhonegapGenerator.prototype.askFor = function askFor() {
   var prompts = [
   {
     name: 'projectName',
-    message: 'What is the name of your PhoneGap project?',
+    message: 'fooWhat is the name of your PhoneGap project?',
     default: 'Hello World'
   },
   { name: 'appPackage',
     message: 'What is your application package',
     default: 'com.phonegap.helloworld'
   },
-/*
-  {
-    type: 'checkbox',
-    name: 'features',
-    message: 'What more would you like?',
-    choices: [{
-      name: 'XUI',
-      value: 'compassBootstrap',
-      checked: true
-    }, {
-      name: 'RequireJS',
-      value: 'includeRequireJS',
-      checked: true
-    }, {
-      name: 'Modernizr',
-      value: 'includeModernizr',
-      checked: true
-    }]}
-*/
 {
   type: 'checkbox',
   name: 'features',
@@ -189,6 +170,8 @@ PhonegapGenerator.prototype.phonegapSetup = function phonegapSetup() {
 	phonegap.create({path:path.resolve('phonegap'), name: this.projectName, id: this.appPackage}, function(e) { self.log.create('Initialized PhoneGap project'); });
 	//fs.rename(path.resolve('www/index.html'), path.resolve('www/index_old.html'), function() {self.log.info('Renamed Phonegap provided index.html -> index_old.html') });
 	
+	this.mkdir('app/res');
+	this.mkdir('app/images');
 	extfs.copyDirSync(path.resolve('phonegap/.cordova'), path.resolve('.cordova'), function(e) {self.log.create("Copied .cordova configuration") });
 	extfs.copyDirSync(path.resolve('phonegap/www/res'), path.resolve('app/res'), function(e) {self.log.create("moved app resources (splash screens etc) to app/res") });
 	extfs.copyDirSync(path.resolve('phonegap/www/img'), path.resolve('app/images'), function(e) {self.log.create("moved app images") });

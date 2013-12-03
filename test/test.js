@@ -38,7 +38,7 @@ describe('phonegap generator', function () {
 	  'config.xml',
 	  'app/index.html',
 	  'app/scripts/index.js',
-	  'app/styles/main.css'
+	  'app/styles/main.css',
     ];
 
     helpers.mockPrompt(this.app, {
