@@ -27,7 +27,7 @@
     "grunt-concurrent": "~0.3.0",
     "load-grunt-tasks": "~0.1.0",
     "time-grunt": "~0.1.1",
-	"grunt-phonegap": "~0.6.2"
+	"grunt-phonegap": "~0.8.0"
   },
   "engines": {
     "node": ">=0.8.0"
